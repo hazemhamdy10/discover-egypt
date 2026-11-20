@@ -1,9 +1,0 @@
-# Discover Egypt is a Django app. Netlify can't run a Python server, so the
-# build renders every public page to static HTML (see netlify_build.py).
-# Python dependencies are installed automatically from requirements.txt.
-[build]
-  command = "python netlify_build.py"
-  publish = "dist"
-
-[build.environment]
-  PYTHON_VERSION = "3.13"

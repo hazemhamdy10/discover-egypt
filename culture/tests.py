@@ -37,7 +37,7 @@ class PublicPagesTests(TestCase):
             reverse("culture:crafts"),
         ]
         for url in urls:
-            response = self.client.get(url)
+            response = self.client.get(url, secure=True)
             self.assertEqual(response.status_code, 200)
             self.assertContains(response, 'lang="ar"')
             self.assertContains(response, 'dir="rtl"')
@@ -49,7 +49,7 @@ class PublicPagesTests(TestCase):
             reverse("culture:craft_detail", args=[self.craft.slug]),
         ]
         for url in urls:
-            self.assertEqual(self.client.get(url).status_code, 200)
+            self.assertEqual(self.client.get(url, secure=True).status_code, 200)
 
     def test_topic_images_are_unique(self):
         image_urls = []

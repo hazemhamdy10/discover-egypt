@@ -1,0 +1,24 @@
+"""Template for the PythonAnywhere WSGI configuration file.
+
+Copy this file's contents into the WSGI file shown in the PythonAnywhere Web tab,
+then replace the two placeholder paths and username.
+"""
+
+import os
+import sys
+
+project_home = "/home/YOUR_USERNAME/discover_egypt"
+venv_site_packages = "/home/YOUR_USERNAME/.virtualenvs/discover-egypt/lib/python3.13/site-packages"
+
+if project_home not in sys.path:
+    sys.path.insert(0, project_home)
+if venv_site_packages not in sys.path:
+    sys.path.insert(0, venv_site_packages)
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+os.environ.setdefault("PYTHONANYWHERE_USERNAME", "YOUR_USERNAME")
+os.environ.setdefault("DEBUG", "False")
+
+from django.core.wsgi import get_wsgi_application
+
+application = get_wsgi_application()
