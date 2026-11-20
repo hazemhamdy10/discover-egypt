@@ -1,0 +1,11 @@
+{% extends 'culture/base.html' %}
+{% block title %}الحرف المصرية | مصر تحكي{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="page-hero-inner"><p class="eyebrow">إبداع بأيدٍ مصرية</p><h1>الحرف والصناعات الثقافية</h1><p>حرف حقيقية تحفظ الذاكرة المصرية وتمنح المجتمعات المحلية فرصة للنمو.</p></div></section>
+<section class="section listing-section"><div class="listing-intro"><h2>صُنعت بحب</h2><p>تعرّف على الخامات والمهارات والقصص خلف كل قطعة.</p></div><div class="cards">
+{% for craft in crafts %}<article class="card content-card">
+    <div class="card-media">{% if craft.image_url %}<img src="{{ craft.image_url }}" alt="{{ craft.name }}" loading="lazy">{% elif craft.cover_image %}<img src="{{ craft.cover_image.url }}" alt="{{ craft.name }}" loading="lazy">{% else %}<div class="image-placeholder">حرفة مصرية</div>{% endif %}<span class="card-kicker">{{ craft.get_category_display }}</span></div>
+    <div class="card-body"><h2>{{ craft.name }}</h2><p class="origin">من {{ craft.origin }}</p><p>{{ craft.description|truncatewords:25 }}</p><a class="card-link" href="{% url 'culture:craft_detail' craft.slug %}">اكتشف الحرفة <span>←</span></a></div>
+</article>{% empty %}<p class="empty-state">لا توجد حِرف مضافة حاليًا.</p>{% endfor %}
+</div></section>
+{% endblock %}

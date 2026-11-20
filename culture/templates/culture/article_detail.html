@@ -1,0 +1,10 @@
+{% extends 'culture/base.html' %}
+{% block title %}{{ article.title }} | مصر تحكي{% endblock %}
+{% block content %}
+<article class="section detail-page">
+    <span class="category-label">{{ article.get_category_display }}</span><h1>{{ article.title }}</h1>
+    {% if article.image_url %}<img src="{{ article.image_url }}" alt="{{ article.title }}" class="detail-image">{% elif article.cover_image %}<img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="detail-image">{% endif %}
+    <p class="detail-summary">{{ article.summary }}</p><div class="detail-content">{{ article.content|linebreaks }}</div>
+    <a href="{% url 'culture:articles' %}" class="back-link">العودة للمقالات ←</a>
+</article>
+{% endblock %}

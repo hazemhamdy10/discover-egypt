@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="مصر تحكي — منصة لاكتشاف الثقافة المصرية ووجهاتها وحرفها.">
+    <title>{% block title %}مصر تحكي{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'culture/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-inner">
+            <a href="{% url 'culture:home' %}" class="logo" aria-label="العودة إلى الصفحة الرئيسية">مصر <span>تحكي</span></a>
+            <nav aria-label="التنقل الرئيسي">
+                <a href="{% url 'culture:home' %}">الرئيسية</a>
+                <a href="{% url 'culture:articles' %}">المقالات</a>
+                <a href="{% url 'culture:destinations' %}">الوجهات السياحية</a>
+                <a href="{% url 'culture:crafts' %}">الحرف المصرية</a>
+            </nav>
+        </div>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+        <p>مصر تحكي — اكتشف تراثنا، وادعم إبداعنا، وعِش ثقافتنا.</p>
+        <p>© 2026 مصر تحكي</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'culture/base.html' %}
+{% block title %}المقالات الثقافية | مصر تحكي{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="page-hero-inner"><p class="eyebrow">اكتشف حكاياتنا</p><h1>المقالات الثقافية</h1><p>قصص قصيرة ومعلومات موثوقة عن التاريخ والفنون والعادات والمطبخ والموسيقى المصرية.</p></div></section>
+<section class="section listing-section"><div class="listing-intro"><h2>حكايات تستحق الاكتشاف</h2><p>اختر موضوعًا وابدأ رحلة جديدة داخل الثقافة المصرية.</p></div><div class="cards">
+{% for article in articles %}<article class="card content-card">
+    <div class="card-media">{% if article.image_url %}<img src="{{ article.image_url }}" alt="{{ article.title }}" loading="lazy">{% elif article.cover_image %}<img src="{{ article.cover_image.url }}" alt="{{ article.title }}" loading="lazy">{% else %}<div class="image-placeholder">مصر تحكي</div>{% endif %}<span class="card-kicker">{{ article.get_category_display }}</span></div>
+    <div class="card-body"><h2>{{ article.title }}</h2><p>{{ article.summary }}</p><a class="card-link" href="{% url 'culture:article_detail' article.slug %}">اقرأ القصة كاملة <span>←</span></a></div>
+</article>{% empty %}<p class="empty-state">لا توجد مقالات منشورة حاليًا.</p>{% endfor %}
+</div></section>
+{% endblock %}

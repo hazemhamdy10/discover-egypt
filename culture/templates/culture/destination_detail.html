@@ -1,0 +1,13 @@
+{% extends 'culture/base.html' %}
+{% block title %}{{ destination.name }} | مصر تحكي{% endblock %}
+{% block content %}
+<article class="section detail-page">
+    <h1>{{ destination.name }}</h1>
+    {% if destination.image_url %}<img src="{{ destination.image_url }}" alt="{{ destination.name }}" class="detail-image">{% elif destination.cover_image %}<img src="{{ destination.cover_image.url }}" alt="{{ destination.name }}" class="detail-image">{% endif %}
+    <div class="fact-grid"><div><h3>المحافظة</h3><p>{{ destination.governorate }}</p></div><div><h3>أفضل وقت للزيارة</h3><p>{{ destination.best_time_to_visit|default:"طوال العام" }}</p></div></div>
+    <h3>الوصف</h3><p>{{ destination.description|linebreaks }}</p>
+    <h3>الأهمية الثقافية</h3><p>{{ destination.cultural_significance|linebreaks }}</p>
+    {% if destination.location_details %}<h3>معلومات الوصول</h3><p>{{ destination.location_details }}</p>{% endif %}
+    <a href="{% url 'culture:destinations' %}" class="back-link">العودة للوجهات ←</a>
+</article>
+{% endblock %}

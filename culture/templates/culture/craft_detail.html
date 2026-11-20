@@ -1,0 +1,12 @@
+{% extends 'culture/base.html' %}
+{% block title %}{{ craft.name }} | مصر تحكي{% endblock %}
+{% block content %}
+<article class="section detail-page">
+    <span class="category-label">{{ craft.get_category_display }}</span><h1>{{ craft.name }}</h1>
+    {% if craft.image_url %}<img src="{{ craft.image_url }}" alt="{{ craft.name }}" class="detail-image">{% elif craft.cover_image %}<img src="{{ craft.cover_image.url }}" alt="{{ craft.name }}" class="detail-image">{% endif %}
+    <h3>المنشأ</h3><p>{{ craft.origin }}</p><h3>الوصف</h3><p>{{ craft.description|linebreaks }}</p>
+    <h3>الخامات المستخدمة</h3><p>{{ craft.materials|linebreaks }}</p><h3>مراحل الإنتاج</h3><p>{{ craft.production_process|linebreaks }}</p>
+    <h3>معلومات عن الحرفيين</h3><p>{{ craft.artisan_information|linebreaks }}</p>
+    <a href="{% url 'culture:crafts' %}" class="back-link">العودة للحرف ←</a>
+</article>
+{% endblock %}

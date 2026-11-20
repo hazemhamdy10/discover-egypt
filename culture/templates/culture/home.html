@@ -1,0 +1,21 @@
+{% extends 'culture/base.html' %}
+{% block title %}اكتشف مصر | مصر تحكي{% endblock %}
+{% block content %}
+<section class="hero"><div class="hero-content">
+    <p class="eyebrow">حكاية حضارة لا تنتهي</p>
+    <h1>اكتشف روح <span>مصر</span></h1>
+    <p class="hero-description">من عبق التاريخ إلى إبداع الحرف اليدوية، اكتشف الهوية المصرية وثقافتها المتنوعة في رحلة تتجاوز حدود المكان والزمان.</p>
+    <a href="#explore" class="primary-button">ابدأ رحلتك</a>
+</div></section>
+<section class="intro section" id="identity">
+    <p class="eyebrow">أكثر من مجرد وجهة سياحية</p><h2>مصر حكايات وثقافات</h2>
+    <p>تعرّف على العادات والتقاليد والفنون التي تشكل الهوية المصرية، واكتشف كيف تحافظ الصناعات الثقافية على تراثنا وتمنحه حياة جديدة.</p>
+</section>
+<section class="section explore" id="explore"><div class="section-heading"><p class="eyebrow">اكتشف بنفسك</p><h2>رحلتك تبدأ من هنا</h2></div>
+    <div class="cards">
+        <article class="card" id="destinations"><div class="card-icon" aria-hidden="true">🏛️</div><h3>وجهات تحكي التاريخ</h3><p>اكتشف المعالم التاريخية والقرى التراثية والأماكن التي تحتفظ بذاكرة مصر.</p><a href="{% url 'culture:destinations' %}">اكتشف الوجهات ←</a></article>
+        <article class="card" id="crafts"><div class="card-icon" aria-hidden="true">🎨</div><h3>إبداع بأيدٍ مصرية</h3><p>تعرّف على الخزف والنسيج والحرف اليدوية والمهارات التي تنتقل بين الأجيال.</p><a href="{% url 'culture:crafts' %}">اكتشف الحرف ←</a></article>
+        <article class="card" id="articles"><div class="card-icon" aria-hidden="true">📖</div><h3>حكايات من الهوية</h3><p>اقرأ عن الفنون والعادات والمطبخ والموسيقى والثقافات المتنوعة في مصر.</p><a href="{% url 'culture:articles' %}">اقرأ المقالات ←</a></article>
+    </div>
+</section>
+{% endblock %}

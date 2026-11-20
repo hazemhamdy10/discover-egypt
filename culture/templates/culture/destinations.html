@@ -1,0 +1,11 @@
+{% extends 'culture/base.html' %}
+{% block title %}الوجهات السياحية | مصر تحكي{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="page-hero-inner"><p class="eyebrow">اكتشف أرض الحضارة</p><h1>الوجهات السياحية</h1><p>أماكن حقيقية تحمل في تفاصيلها حكايات مصر، من المعالم التاريخية إلى الواحات والشواطئ.</p></div></section>
+<section class="section listing-section"><div class="listing-intro"><h2>أماكن لها حكاية</h2><p>تعرّف على طبيعة كل وجهة وأهميتها الثقافية قبل زيارتها.</p></div><div class="cards">
+{% for destination in destinations %}<article class="card content-card">
+    <div class="card-media">{% if destination.image_url %}<img src="{{ destination.image_url }}" alt="{{ destination.name }}" loading="lazy">{% elif destination.cover_image %}<img src="{{ destination.cover_image.url }}" alt="{{ destination.name }}" loading="lazy">{% else %}<div class="image-placeholder">وجهة مصرية</div>{% endif %}<span class="card-kicker">{{ destination.governorate }}</span></div>
+    <div class="card-body"><h2>{{ destination.name }}</h2><p>{{ destination.description|truncatewords:25 }}</p><a class="card-link" href="{% url 'culture:destination_detail' destination.slug %}">اكتشف المكان <span>←</span></a></div>
+</article>{% empty %}<p class="empty-state">لا توجد وجهات سياحية حاليًا.</p>{% endfor %}
+</div></section>
+{% endblock %}
